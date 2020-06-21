@@ -1,9 +1,10 @@
-class Cli 
+class ClimbersCli::CLI 
     def call
         puts " "
         puts " "
         puts "Welcome to the Pacific Northwest Climber's CLI!"
         puts "Search a wide selection of climbing routes in Washington State"
+        ClimbersCli::API.get_routes
         puts " "
         menu
         puts " "
@@ -40,29 +41,29 @@ class Cli
             puts "Select which climbing style you's like to sort by:"
             puts " "
             puts <<-DOC 
-                2. SPORT
-                3. TRAD
-                4. BOULDER
-                5. ALPINE
+                1. SPORT
+                2. TRAD
+                3. BOULDER
+                4. ALPINE
+                5. Return to MENU 
                 0. EXIT Climber's CLI
-                1. Return to MENU 
             DOC
             input = gets.strip.downcase
             case input
             when "1"
-                menu 
-            when "2"
                 puts "List of sport climbs"
                 route_list
-            when "3"
+            when "2"
                 puts "List of trad climbs"
                 route_list
-            when "4"
+            when "3"
                 puts "List of boulder problems"
                 route_list
-            when "5"
+            when "4"
                 puts "List of alpine climbs"
                 route_list
+            when "5"
+                menu 
             when "0"
                 goodbye
             else
@@ -106,18 +107,18 @@ class Cli
             puts "Select route from the following for specific route details:"
             puts ""
             puts <<-DOC
+                1. Acid Baby
+                2. Enchantment
+                3. Road to Zion
+                4. Valkryie
+                5. Return to MENU
                 0. EXIT Climber's CLI 
-                1. Return to MENU 
-                2. Acid Baby
-                3. Enchantment
-                4. Road to Zion
-                5. Valkryie
             DOC
-            puts ""
+            puts " "
             input = gets.strip.downcase
             case input
             when "1"
-                menu 
+                route_details
             when "2"
                 route_details
             when "3"
@@ -125,7 +126,7 @@ class Cli
             when "4"
                 route_details
             when "5"
-                route_details
+                menu 
             when "0"
                 goodbye
             else
@@ -135,12 +136,14 @@ class Cli
     end
 
     def route_details
+        @routes = Routes.details
         input = nil 
         while input != "0"
             puts <<-DOC
                 Name: Acid Baby
                 Type: Trad
                 Rating: 5.10+
+                Stars: 4.9
                 Pitches: 7
                 Location:
                     Washington,
@@ -149,16 +152,16 @@ class Cli
                     Aasgard Pass
             DOC
             puts " "
+            puts "1. Return to list of routes"
+            puts "2. Return to MENU"
             puts "0. EXIT Climber's CLI"
-            puts "1. Return to MENU"
-            puts "2. Return to list of routes"
             puts " "
             input = gets.strip.downcase
             case input
             when "1"
-                menu 
-            when "2"
                 route_list
+            when "2"
+                menu 
             when "0"
                 goodbye
             else

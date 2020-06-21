@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/environment"
+require "bundler/setup"
+# require "environment"
 
-Cli.new.call
+ClimbersCli::CLI.new.call
+API.get_routes
