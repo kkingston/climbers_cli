@@ -5,4 +5,4 @@ require "bundler/setup"
 # require "environment"
 
 ClimbersCli::CLI.new.call
-API.get_routes
+ClimbersCli::API.get_routes

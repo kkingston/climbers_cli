@@ -1,22 +1,30 @@
-class ClimbersCli::Routes
-    attr_accessor :name, :type, :rating, :stars, :pitches
+class ClimbersCli::Route
+    attr_accessor :name, :type, :rating, :stars, :pitches, :location
 
-    def self.details    
-        route1.self.new
-        route1.name = "Acid Baby"
-        route1.type = "Trad"
-        route1.rating = "5.10+"
-        route1.stars = "4.9"
-        route1.pitches = "7"
-       
+    @@all = []
 
-        route2.self.new
-        route2.name = "Toxic Shock"
-        route2.type = "Trad"
-        route2.rating = "5.9"
-        route2.stars = "4.6"
-        route2.pitches = "1"
-      
-        [route1, route2]
+    def initialize(name:, type:, rating:, stars:, pitches:, location:)
+        self.name = name
+        self.type = type
+        self.rating = rating
+        self.stars = stars
+        self.pitches = pitches
+        self.location = location
+        self.save
+    end
+
+    def sport_routes
+        @@all.map do |r|
+            r.select("rating = Sport")
+        end
+    end
+        
+
+    def save 
+        @@all << self
+    end
+
+    def self.all
+        @@all
     end
 end 
