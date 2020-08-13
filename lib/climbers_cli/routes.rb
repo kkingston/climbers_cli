@@ -17,8 +17,7 @@ class ClimbersCli::Route
         @@all.map do |r|
             r.select("rating = Sport")
         end
-    end
-        
+    end 
 
     def save 
         @@all << self
@@ -27,4 +26,10 @@ class ClimbersCli::Route
     def self.all
         @@all
     end
+
+    # def self.get_names(input)
+    #     @@all.select do |i|
+    #        i.name.start_with?(input)
+    #     end
+    # end
 end 

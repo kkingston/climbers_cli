@@ -22,24 +22,26 @@ class ClimbersCli::API
                 pitches: pitches, 
                 location: location)
         end
-        binding.pry 
+        # binding.pry 
     end
 end 
 
 <<-NOTES
 
 NEED:
--Filter API hash items into individual route style hashes (Or objects?...)
+-Filter API hash items into individual route style hash (Or objects?...)
     -Sport, Trad, Alpine, Boulders
 
 
 PROBLEMS:
--CLI won't exit properly..
+Done. -CLI won't exit properly..
+Done. -Explain self
 -Figure out how inputs work, How can you explain to someone?
--Explain self
 -conceptual holes:
     -OO in general.  Which code goes where to talk with certain classes?
     -What do I need to create objects.. 
+    -Maniputlating hashes.. 
+    -pry
 
 
 NOTES
